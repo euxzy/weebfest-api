@@ -9,3 +9,47 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model users {
+  id       Int    @id @default(autoincrement())
+  name     String @db.VarChar(50)
+  username String @unique @db.VarChar(50)
+  email    String @unique @db.VarChar(50)
+  password String @db.VarChar(255)
+}
+
+model events {
+  id          Int      @id @default(autoincrement())
+  city_id     BigInt   @db.BigInt
+  name        String   @db.VarChar(100)
+  address     String   @db.Text
+  description String   @db.Text
+  start_hour  DateTime @db.Time()
+  end_hour    DateTime @db.Time()
+  start_date  DateTime @db.Date
+  end_date    DateTime @db.Date
+  price       Int      @default(0) @db.Integer
+}
+
+model aditional_links {
+  id       Int    @id @default(autoincrement())
+  event_id BigInt @db.BigInt
+  url      String @db.Text
+}
+
+model attachements {
+  id       Int    @id @default(autoincrement())
+  event_id BigInt @db.BigInt
+  name     String @db.Text
+}
+
+model cities {
+  id          Int    @id @default(autoincrement())
+  province_id BigInt @db.BigInt
+  name        String @db.VarChar(50)
+}
+
+model provincies {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(50)
+}

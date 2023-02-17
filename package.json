@@ -1,8 +1,8 @@
 {
-  "name": "weebfest",
+  "name": "ngewibu",
   "version": "1.0.0",
   "main": "app.ts",
-  "repository": "https://github.com/euxzy/weebfest",
+  "repository": "https://github.com/euxzy/ngewibu",
   "author": "euxzy",
   "license": "MIT",
   "scripts": {
