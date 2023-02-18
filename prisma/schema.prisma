@@ -20,7 +20,7 @@ model users {
 
 model events {
   id          Int      @id @default(autoincrement())
-  city_id     BigInt   @db.BigInt
+  city_id     Int      @db.Integer
   name        String   @db.VarChar(100)
   address     String   @db.Text
   description String   @db.Text
@@ -33,19 +33,19 @@ model events {
 
 model aditional_links {
   id       Int    @id @default(autoincrement())
-  event_id BigInt @db.BigInt
+  event_id Int    @db.Integer
   url      String @db.Text
 }
 
 model attachements {
   id       Int    @id @default(autoincrement())
-  event_id BigInt @db.BigInt
+  event_id Int    @db.Integer
   name     String @db.Text
 }
 
 model cities {
   id          Int    @id @default(autoincrement())
-  province_id BigInt @db.BigInt
+  province_id Int    @db.Integer
   name        String @db.VarChar(50)
 }
 
