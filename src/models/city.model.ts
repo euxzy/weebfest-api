@@ -1,6 +1,6 @@
-import prisma from '../database/connection'
+import prisma from '../helpers/connection'
 import CityInterface from '../interface/city.interface'
-import response from '../response/response'
+import response from '../helpers/response'
 
 const getCity = async () => {
   const cities = await prisma.cities.findMany()

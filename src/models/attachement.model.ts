@@ -1,6 +1,6 @@
-import prisma from "../database/connection";
-import AttachementInterface from "../interface/attachement.interface";
-import response from "../response/response";
+import prisma from "../helpers/connection"
+import AttachementInterface from "../interface/attachement.interface"
+import response from "../helpers/response"
 
 const storeAttach = async (data: AttachementInterface) => {
   try {

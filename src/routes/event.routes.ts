@@ -5,7 +5,7 @@ import eventController from '../controllers/event.controller'
 const eventRoutes = (server: Server) => {
   server.route({
     method: 'GET',
-    path: '/api/events',
+    path: '/api/event',
     handler: eventController.index,
   })
 

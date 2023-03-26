@@ -1,4 +1,4 @@
-import { Server } from "@hapi/hapi";
+import { Server } from "@hapi/hapi"
 
 const staticRoutes = (server: Server) => {
   server.route({

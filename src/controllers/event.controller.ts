@@ -7,10 +7,18 @@ import EventInterface from '../interface/event.interface'
 import AttachementInterface from '../interface/attachement.interface'
 
 const index = async (request: Request, h: ResponseToolkit) => {
-  const events = await eventModel.getEvents()
+  const paramId = request.query?.id
+  // console.log(param)
 
-  console.log(events.status_code)
-  return h.response(events).code(events.status_code)
+  if (!paramId) {
+    const events = await eventModel.getEvents()
+    return h.response(events).code(events.status_code)
+  }
+  
+  const event = await eventModel.getEventDetails(paramId)
+  // console.log(events.status_code)
+  return h.response(event).code(event.status_code)
+
 }
 
 const store = async (request: Request, h: ResponseToolkit) => {

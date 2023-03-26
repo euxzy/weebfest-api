@@ -1,6 +1,6 @@
-import prisma from '../database/connection'
+import prisma from '../helpers/connection'
 import ProvinceInterface from '../interface/province.interface'
-import response from '../response/response'
+import response from '../helpers/response'
 
 const getProvince = async () => {
   const provincies = await prisma.provincies.findMany()
