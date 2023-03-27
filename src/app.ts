@@ -1,6 +1,8 @@
 'use strict'
 
 import Hapi, { Server } from '@hapi/hapi'
+import inert from '@hapi/inert'
+
 import config from './config/config'
 import routes from './routes'
 
@@ -15,6 +17,8 @@ const init = async () => {
       },
     },
   })
+  
+  await server.register(inert)
 
   routes(server)
 

@@ -1,10 +1,11 @@
 import { Server } from '@hapi/hapi'
+
 import eventController from '../controllers/event.controller'
 
 const eventRoutes = (server: Server) => {
   server.route({
     method: 'GET',
-    path: '/api/events',
+    path: '/api/event',
     handler: eventController.index,
   })
 
@@ -15,6 +16,14 @@ const eventRoutes = (server: Server) => {
     handler: eventController.store,
     options: {
       payload: {
+        output: 'stream',
+        parse: true,
+        allow: [
+          'application/json',
+          'multipart/form-data',
+          'application/x-www-form-urlencoded',
+        ],
+        maxBytes: 1048576 * 10,
         multipart,
       },
     },

@@ -1,5 +1,6 @@
-import prisma from '../database/connection'
-import response from '../response/response'
+import prisma from '../helpers/connection'
+import ProvinceInterface from '../interface/province.interface'
+import response from '../helpers/response'
 
 const getProvince = async () => {
   const provincies = await prisma.provincies.findMany()
@@ -8,5 +9,21 @@ const getProvince = async () => {
   return response.success(provincies)
 }
 
-const provinceModel = { getProvince }
+const storeProvince = async (data: ProvinceInterface) => {
+  try {
+    const province = await prisma.provincies.create({
+      data: {
+        id: undefined,
+        name: data.name
+      }
+    })
+
+    return response.success(province, 201, 'Add Province Success!')
+  } catch (err) {
+    console.log(err)
+    return response.error(500, 'Internal Server Error. Please Try Again Later!')
+  }
+}
+
+const provinceModel = { getProvince, storeProvince }
 export default provinceModel

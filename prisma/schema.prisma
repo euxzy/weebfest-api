@@ -19,37 +19,45 @@ model users {
 }
 
 model events {
-  id          Int      @id @default(autoincrement())
-  city_id     Int      @db.Integer
-  name        String   @db.VarChar(100)
-  address     String   @db.Text
-  description String   @db.Text
-  start_hour  DateTime @db.Time()
-  end_hour    DateTime @db.Time()
-  start_date  DateTime @db.Date
-  end_date    DateTime @db.Date
-  price       Int      @default(0) @db.Integer
+  id               Int                @id @default(autoincrement())
+  name             String             @db.VarChar(100)
+  address          String             @db.Text
+  description      String             @db.Text
+  start_hour       DateTime           @db.Time()
+  end_hour         DateTime           @db.Time()
+  start_date       DateTime           @db.Date
+  end_date         DateTime           @db.Date
+  price            Int                @default(0) @db.Integer
+  city             cities             @relation(fields: [city_id], references: [id])
+  city_id          Int
+  attachements     attachements[]
+  additional_links additional_links[]
 }
 
-model aditional_links {
+model additional_links {
   id       Int    @id @default(autoincrement())
-  event_id Int    @db.Integer
   url      String @db.Text
+  event    events @relation(fields: [event_id], references: [id])
+  event_id Int
 }
 
 model attachements {
   id       Int    @id @default(autoincrement())
-  event_id Int    @db.Integer
   name     String @db.Text
+  event    events @relation(fields: [event_id], references: [id])
+  event_id Int
 }
 
 model cities {
-  id          Int    @id @default(autoincrement())
-  province_id Int    @db.Integer
-  name        String @db.VarChar(50)
+  id          Int        @id @default(autoincrement())
+  name        String     @db.VarChar(50)
+  events      events[]
+  province    provincies @relation(fields: [province_id], references: [id])
+  province_id Int
 }
 
 model provincies {
-  id   Int    @id @default(autoincrement())
-  name String @db.VarChar(50)
+  id     Int      @id @default(autoincrement())
+  name   String   @db.VarChar(50)
+  cities cities[]
 }
