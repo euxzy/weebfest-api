@@ -3,8 +3,8 @@
 import Hapi, { Server } from '@hapi/hapi'
 import inert from '@hapi/inert'
 
-import config from './config/config'
-import routes from './routes'
+import config from '@/config/config'
+import routes from '@/routes'
 
 const init = async () => {
   const server: Server = Hapi.server({

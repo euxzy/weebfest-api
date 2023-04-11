@@ -6,7 +6,9 @@
   "author": "euxzy",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon"
+    "start": "node dist/app.js",
+    "dev": "nodemon",
+    "build": "tsc && tsc-alias"
   },
   "dependencies": {
     "@hapi/hapi": "^21.3.0",
@@ -19,6 +21,8 @@
     "@types/node": "^18.13.0",
     "nodemon": "^2.0.20",
     "ts-node": "^10.9.1",
+    "tsc-alias": "^1.8.5",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^4.9.5"
   }
 }
